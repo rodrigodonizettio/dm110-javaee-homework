@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
  
   <!-- The Basics -->
-  <name>Trabalho de DM 110 parent</name>
+  <name>DM 110 final home work</name>
   <description>DM 110 JEE agregator</description>
 
   <groupId>br.inatel.dm110</groupId>
-  <artifactId>trabalho-parent</artifactId>
+  <artifactId>product-parent</artifactId>
   <version>1.0</version>
   <packaging>pom</packaging>
 
@@ -18,12 +18,12 @@
   </properties>
 
   <modules>
-    <module>trabalho-ear</module>
-    <module>trabalho-ejb</module>
-    <module>trabalho-ejb-client</module>
-    <module>trabalho-web</module>
-    <module>trabalho-api</module>
-    <module>trabalho-impl</module>
+    <module>product-ear</module>
+    <module>product-ejb</module>
+    <module>product-ejb-client</module>
+    <module>product-web</module>
+    <module>product-api</module>
+    <module>product-impl</module>
   </modules>
 
   <build>
@@ -43,31 +43,31 @@
     <dependencies>
 		<dependency>
 			  <groupId>br.inatel.dm110</groupId>
-			  <artifactId>trabalho-web</artifactId>
+			  <artifactId>product-web</artifactId>
 			  <version>1.0</version>
 			  <type>war</type>
 		</dependency>
 		<dependency>
 			  <groupId>br.inatel.dm110</groupId>
-			  <artifactId>trabalho-ejb</artifactId>
+			  <artifactId>product-ejb</artifactId>
 			  <version>1.0</version>
 			  <type>ejb</type>
 		</dependency>
 		<dependency>
 			  <groupId>br.inatel.dm110</groupId>
-			  <artifactId>trabalho-ejb-client</artifactId>
+			  <artifactId>product-ejb-client</artifactId>
 			  <version>1.0</version>
 			  <type>jar</type>
 		</dependency>
 		<dependency>
 			  <groupId>br.inatel.dm110</groupId>
-			  <artifactId>trabalho-api</artifactId>
+			  <artifactId>product-api</artifactId>
 			  <version>1.0</version>
 			  <type>jar</type>
 		</dependency>
 		<dependency>
 			  <groupId>br.inatel.dm110</groupId>
-			  <artifactId>trabalho-impl</artifactId>
+			  <artifactId>product-impl</artifactId>
 			  <version>1.0</version>
 			  <type>jar</type>
 		</dependency>
