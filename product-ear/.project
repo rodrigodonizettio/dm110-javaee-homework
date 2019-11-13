@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+  <name>product-ear</name>
+  <comment>Main JEE project of DM 110. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects>
+    <project>product-web</project>
+    <project>product-ejb</project>
+    <project>product-api</project>
+    <project>product-ejb-client</project>
+    <project>product-impl</project>
+  </projects>
+  <buildSpec/>
+  <natures/>
+</projectDescription>
