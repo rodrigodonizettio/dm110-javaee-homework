@@ -24,5 +24,10 @@
 		<groupId>javax</groupId>
 		<artifactId>javaee-api</artifactId>
 	</dependency>
+	<dependency> 
+		<groupId>com.fasterxml.jackson.core</groupId> 
+		<artifactId>jackson-databind</artifactId> 
+		<version>2.5.3</version> 
+	</dependency>
   </dependencies>
 </project>
