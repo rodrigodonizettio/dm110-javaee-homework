@@ -1,4 +1,4 @@
-package br.inatel.dm110.log;
+package br.inatel.dm110.ejb.log;
 
 import java.io.Serializable;
 import java.util.Date;

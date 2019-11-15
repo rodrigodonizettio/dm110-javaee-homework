@@ -1,4 +1,4 @@
-package br.inatel.dm110.entity;
+package br.inatel.dm110.ejb.entity;
 
 import java.io.Serializable;
 
