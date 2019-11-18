@@ -11,7 +11,7 @@ import javax.ejb.Stateless;
 import br.inatel.dm110.api.dto.ProductDTO;
 import br.inatel.dm110.ejb.dao.ProductDAO;
 import br.inatel.dm110.ejb.entity.Product;
-import br.inatel.dm110.ejb.messagesender.ProductMessageSender;
+import br.inatel.dm110.ejb.messagesender.AuditMessageSender;
 import br.inatel.dm110.ejbclient.ProductLocal;
 import br.inatel.dm110.ejbclient.ProductRemote;
 
@@ -22,8 +22,7 @@ public class ProductBean implements ProductLocal, ProductRemote {
 	@EJB
 	private ProductDAO productDAO;
 	@EJB
-	private ProductMessageSender productMessageSender;
-	
+	private AuditMessageSender auditMessageSender;
 	
 	@Override
 	public ProductDTO create(ProductDTO productDTO) {
@@ -33,8 +32,11 @@ public class ProductBean implements ProductLocal, ProductRemote {
 				productDTO.getDescription(),
 				productDTO.getPrice(),
 				productDTO.getCategory()));
+		//Send product and operation to message sender
+		auditMessageSender.sendProductDTO(productDTO, "Product has been created...");
 		return productDTO;
 	}
+	
 	@Override
 	public List<ProductDTO> retrieveAll() {
 		List<Product> products = productDAO.retrieveAll();
@@ -47,18 +49,26 @@ public class ProductBean implements ProductLocal, ProductRemote {
 					p.getPrice(),
 					p.getCategory()));		
 			});
+		//Send product and operation to message sender
+		//auditMessageSender.sendProductDTO(productDTO, "Product has been created...");
+		
 		return productsDTO;
 	}
+	
 	@Override
 	public ProductDTO retrieveByCode(Integer code) {
 		Product product = productDAO.retrieveByCode(code);
-		return new ProductDTO(
+		ProductDTO productDTO = new ProductDTO(
 				product.getCode(),
 				product.getName(),
 				product.getDescription(),
 				product.getPrice(),
-				product.getCategory());
+				product.getCategory());		
+		//Send product and operation to message sender
+		auditMessageSender.sendProductDTO(productDTO, "Product has been fetched...");
+		return productDTO;
 	}
+	
 	@Override
 	public ProductDTO update(ProductDTO productDTO) {
 		productDAO.update(new Product(
@@ -67,6 +77,8 @@ public class ProductBean implements ProductLocal, ProductRemote {
 				productDTO.getDescription(),
 				productDTO.getPrice(),
 				productDTO.getCategory()));
+		//Send product and operation to message sender
+		auditMessageSender.sendProductDTO(productDTO, "Product has been updated...");
 		return productDTO;
 	}
 }
