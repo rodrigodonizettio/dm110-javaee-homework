@@ -7,12 +7,12 @@ import javax.enterprise.context.RequestScoped;
 
 import br.inatel.dm110.api.ProductService;
 import br.inatel.dm110.api.dto.ProductDTO;
-import br.inatel.dm110.ejbclient.ProductRemote;
+import br.inatel.dm110.ejbclient.product.ProductRemote;
 
 @RequestScoped
 public class ProductService_Impl implements ProductService {
 	//TODO: Verify if the lookup is correct
-	@EJB(lookup="ejb:product-ear-1.0/product-ejb-1.0/ProductBean!br.inatel.dm110.ejbclient.ProductRemote")
+	@EJB(lookup="ejb:product-ear-1.0/product-ejb-1.0/ProductBean!br.inatel.dm110.ejbclient.product.ProductRemote")
 	private ProductRemote productRemote;
 	
 	@Override

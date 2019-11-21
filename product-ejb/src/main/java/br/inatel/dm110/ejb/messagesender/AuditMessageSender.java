@@ -1,5 +1,7 @@
 package br.inatel.dm110.ejb.messagesender;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
@@ -10,10 +12,11 @@ import javax.jms.Queue;
 import javax.jms.Session;
 
 import br.inatel.dm110.api.dto.ProductDTO;
-import br.inatel.dm110.ejb.log.Audit;
+import br.inatel.dm110.ejb.constants.OperationConstants;
+import br.inatel.dm110.ejb.entity.Audit;
 
 @Stateless
-public class AuditMessageSender {
+public class AuditMessageSender {	
 	@Resource(lookup="java:/ConnectionFactory")
 	private ConnectionFactory connectionFactory;
 	@Resource(lookup="java:/jms/queue/productqueue") //The "productqueue" queue must be configured in WildFly container
@@ -27,10 +30,11 @@ public class AuditMessageSender {
 			
 			//Now, we are going to create a Audit message:
 			Audit audit = new Audit();
-			audit.setCode(productDTO.getCode());	//Audit code is the product code!
+			if(!operation.equals(OperationConstants.RETRIEVE_ALL)) {
+				audit.setCode(productDTO.getCode());	//Audit code is the product code!
+			}		
 			audit.setOperation(operation);
-			
-			System.out.println("Audit Message generated successfull");
+			audit.setDate(new Date()); //TODO: Date is deprecated. Should be replaced by Calendar type
 			
 			ObjectMessage objectMessage = session.createObjectMessage(audit);
 			messageProducer.send(objectMessage);

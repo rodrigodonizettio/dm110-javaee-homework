@@ -9,11 +9,12 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import br.inatel.dm110.api.dto.ProductDTO;
+import br.inatel.dm110.ejb.constants.OperationConstants;
 import br.inatel.dm110.ejb.dao.ProductDAO;
 import br.inatel.dm110.ejb.entity.Product;
 import br.inatel.dm110.ejb.messagesender.AuditMessageSender;
-import br.inatel.dm110.ejbclient.ProductLocal;
-import br.inatel.dm110.ejbclient.ProductRemote;
+import br.inatel.dm110.ejbclient.product.ProductLocal;
+import br.inatel.dm110.ejbclient.product.ProductRemote;
 
 @Stateless
 @Local(ProductLocal.class)
@@ -32,8 +33,7 @@ public class ProductBean implements ProductLocal, ProductRemote {
 				productDTO.getDescription(),
 				productDTO.getPrice(),
 				productDTO.getCategory()));
-		//Send product and operation to message sender
-		auditMessageSender.sendProductDTO(productDTO, "Product has been created...");
+		auditMessageSender.sendProductDTO(productDTO, OperationConstants.CREATE);
 		return productDTO;
 	}
 	
@@ -49,9 +49,7 @@ public class ProductBean implements ProductLocal, ProductRemote {
 					p.getPrice(),
 					p.getCategory()));		
 			});
-		//Send product and operation to message sender
-		//auditMessageSender.sendProductDTO(productDTO, "Product has been created...");
-		
+		auditMessageSender.sendProductDTO(null, OperationConstants.RETRIEVE_ALL);
 		return productsDTO;
 	}
 	
@@ -63,9 +61,8 @@ public class ProductBean implements ProductLocal, ProductRemote {
 				product.getName(),
 				product.getDescription(),
 				product.getPrice(),
-				product.getCategory());		
-		//Send product and operation to message sender
-		auditMessageSender.sendProductDTO(productDTO, "Product has been fetched...");
+				product.getCategory());
+		auditMessageSender.sendProductDTO(productDTO, OperationConstants.RETRIEVE_BY_CODE);
 		return productDTO;
 	}
 	
@@ -77,8 +74,7 @@ public class ProductBean implements ProductLocal, ProductRemote {
 				productDTO.getDescription(),
 				productDTO.getPrice(),
 				productDTO.getCategory()));
-		//Send product and operation to message sender
-		auditMessageSender.sendProductDTO(productDTO, "Product has been updated...");
+		auditMessageSender.sendProductDTO(productDTO, OperationConstants.UPDATE);
 		return productDTO;
 	}
 }

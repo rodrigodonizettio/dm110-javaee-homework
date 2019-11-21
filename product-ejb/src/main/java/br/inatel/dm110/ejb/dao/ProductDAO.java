@@ -30,7 +30,6 @@ public class ProductDAO {
 		return (Product) query.getSingleResult();
 	}
 	
-	//TODO: must be tested
 	public Product update(Product product) {
 		Query query = entityManager.createQuery("UPDATE Product SET "
 				+ "name = :name, "
