@@ -23,10 +23,11 @@ public class AuditMDB implements MessageListener{
 	@Override
 	public void onMessage(Message message) {
 		try {
-				//If arrived a message with an object Audit type:
+				//If arrived a message with an object:
 				if(message instanceof ObjectMessage) {
 					ObjectMessage objectMessage = (ObjectMessage)message;
 					
+					//If this object is Audit type:
 					if(objectMessage.getObject() instanceof Audit) {
 						Audit audit = (Audit) objectMessage.getObject();						
 						auditDAO.create(audit);

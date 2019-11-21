@@ -11,6 +11,8 @@ import br.inatel.dm110.ejb.entity.Product;
 
 @Stateless
 public class ProductDAO {
+	
+	//The persistence unit is the same for Audit and Product
 	@PersistenceContext(unitName="product_pu") //Configured in: "product-ejb/src/main/resources/META-INF/persistence.xml"
 	private EntityManager entityManager;
 	

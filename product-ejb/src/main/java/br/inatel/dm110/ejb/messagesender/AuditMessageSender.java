@@ -19,6 +19,8 @@ import br.inatel.dm110.ejb.entity.Audit;
 public class AuditMessageSender {	
 	@Resource(lookup="java:/ConnectionFactory")
 	private ConnectionFactory connectionFactory;
+	
+	//Queue name should refers to Audit and not to Product. Anyway, we kept productqueue this name.
 	@Resource(lookup="java:/jms/queue/productqueue") //The "productqueue" queue must be configured in WildFly container
 	private Queue queue;
 	
