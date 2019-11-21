@@ -1,4 +1,4 @@
-package br.inatel.dm110.ejbclient;
+package br.inatel.dm110.ejbclient.product;
 
 import java.util.List;
 
