@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "c3f6b6ea-f054-4839-8d6b-87d5adba7d65",
+		"name": "DM110",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RETRIEVE_Product-All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/product-web/api/product",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"product-web",
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RETRIEVE_Product-Single",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/product-web/api/product/123456",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"product-web",
+						"api",
+						"product",
+						"123456"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE_Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"code\": 987654,\n\t\"name\": \"Vídeo Porteiro\",\n\t\"description\": \"Vídeo Porteiro 4 câmeras\",\n\t\"price\": 450.00,\n\t\"category\": \"Eletrônicos\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/product-web/api/product",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"product-web",
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT_Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category\": \"Eletrônicos\",\n    \"code\": 123456,\n    \"description\": \"Interfone residencial com alimentação interna\",\n    \"name\": \"Interfone LR570\",\n    \"price\": 75\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/product-web/api/product",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"product-web",
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RETRIEVE_Audit-All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/product-web/api/audit",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"product-web",
+						"api",
+						"audit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
